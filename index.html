@@ -1,671 +1,246 @@
-<!DOCTYPE html>
-<html lang="uk">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ELAV.SHOP — Інтернет-магазин електрики</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-:root {
-  --navy:#1b3a6b;--navy-d:#122952;--navy-l:#2a529a;
-  --blue-bg:#eef3fb;--orange:#f5821f;--orange-d:#d96a09;--orange-l:#fff3e8;
-  --white:#ffffff;--gray-50:#f8f9fc;--gray-100:#f0f2f7;--gray-200:#e2e6ef;
-  --gray-300:#c8cfde;--gray-500:#7e8da8;--gray-700:#3d4a62;
-  --text:#1c2535;--text-s:#5a6778;
-  --green:#22a05a;--green-bg:#edf9f2;--red:#e53935;
-  --radius:8px;--radius-lg:14px;
-  --shadow-sm:0 1px 4px rgba(27,58,107,.07);
-  --shadow:0 4px 20px rgba(27,58,107,.1);
-  --shadow-lg:0 8px 40px rgba(27,58,107,.15);
-  --tr:.18s ease;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;font-size:15px;color:var(--text);background:var(--gray-50);line-height:1.6}
-a{text-decoration:none;color:inherit}
-img{display:block;max-width:100%}
-ul{list-style:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-
-/* TOPBAR */
-.topbar{background:var(--navy);color:rgba(255,255,255,.75);font-size:12.5px;padding:7px 0}
-.topbar-in{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.topbar a{color:rgba(255,255,255,.75);transition:color var(--tr)}
-.topbar a:hover{color:#fff}
-.topbar-l,.topbar-r{display:flex;align-items:center;gap:18px}
-.topbar-phone{color:#fff!important;font-weight:600;font-size:13px}
-.work-hours{display:flex;align-items:center;gap:5px}
-.work-hours::before{content:'';width:7px;height:7px;border-radius:50%;background:#4ade80;display:inline-block}
-
-/* HEADER */
-.header{background:var(--white);box-shadow:0 2px 0 var(--gray-200);position:sticky;top:0;z-index:200}
-.header-in{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:200px 1fr auto;align-items:center;gap:20px;height:72px}
-.logo{display:flex;align-items:center;gap:10px}
-.logo-mark{width:44px;height:44px;background:var(--navy);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-mark svg{width:24px;height:24px;color:#fff}
-.logo-text strong{display:block;font-family:'Exo 2',sans-serif;font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
-.logo-text small{font-size:10px;color:var(--gray-500);text-transform:uppercase;letter-spacing:.08em}
-.search-wrap{display:flex;align-items:center;border:2px solid var(--gray-200);border-radius:var(--radius);background:var(--white);transition:border-color var(--tr),box-shadow var(--tr);overflow:hidden}
-.search-wrap:focus-within{border-color:var(--navy);box-shadow:0 0 0 3px rgba(27,58,107,.1)}
-.search-wrap select{border:none;outline:none;background:var(--gray-50);border-right:2px solid var(--gray-200);padding:0 28px 0 14px;height:44px;font-size:13px;color:var(--text-s);font-family:inherit;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%237e8da8' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;white-space:nowrap}
-.search-wrap input{flex:1;border:none;outline:none;background:none;padding:0 16px;height:44px;font-size:14px;color:var(--text);font-family:inherit}
-.search-wrap input::placeholder{color:var(--gray-500)}
-.search-btn{background:var(--orange);border:none;padding:0 20px;height:44px;display:flex;align-items:center;gap:6px;color:white;font-size:13px;font-weight:600;font-family:'Exo 2',sans-serif;letter-spacing:.02em;transition:background var(--tr);white-space:nowrap}
-.search-btn:hover{background:var(--orange-d)}
-.search-btn svg{width:17px;height:17px}
-.hdr-right{display:flex;align-items:center;gap:6px}
-.hdr-ico{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px;border-radius:var(--radius);color:var(--gray-700);transition:background var(--tr),color var(--tr);position:relative}
-.hdr-ico:hover{background:var(--gray-100);color:var(--navy)}
-.hdr-ico svg{width:22px;height:22px}
-.hdr-ico span{font-size:10px;font-weight:500}
-.hdr-badge{position:absolute;top:5px;right:5px;background:var(--orange);color:white;font-size:9px;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.cart-ico{background:var(--navy);border-radius:var(--radius);padding:9px 16px;gap:10px;flex-direction:row;color:white;margin-left:4px}
-.cart-ico:hover{background:var(--navy-l);color:white}
-.cart-ico svg{width:20px;height:20px;color:white}
-.cart-ico .cart-info strong{display:block;font-size:13px;font-weight:600;line-height:1.1}
-.cart-ico .cart-info small{font-size:11px;color:rgba(255,255,255,.65)}
-
-/* NAV */
-.nav{background:var(--navy)}
-.nav-in{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:stretch}
-.all-cats{display:flex;align-items:center;gap:10px;background:var(--orange);color:white;font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:0 22px;height:48px;flex-shrink:0;border:none;cursor:pointer;transition:background var(--tr)}
-.all-cats:hover{background:var(--orange-d)}
-.all-cats svg{width:18px;height:18px}
-.nav-links{display:flex;align-items:stretch;overflow-x:auto}
-.nav-links::-webkit-scrollbar{display:none}
-.nav-links a{display:flex;align-items:center;padding:0 16px;height:48px;font-size:13px;font-weight:500;color:rgba(255,255,255,.8);white-space:nowrap;border-left:1px solid rgba(255,255,255,.1);transition:color var(--tr),background var(--tr)}
-.nav-links a:hover{color:white;background:rgba(255,255,255,.08)}
-.nav-links a.fire{color:#fbbf24}
-
-/* HERO */
-.hero{background:var(--white);border-bottom:1px solid var(--gray-200)}
-.hero-in{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:1fr 340px;gap:0;align-items:stretch}
-.hero-main{padding:52px 48px 52px 0;border-right:1px solid var(--gray-200)}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--blue-bg);color:var(--navy);border-radius:99px;padding:5px 14px;font-size:12px;font-weight:600;letter-spacing:.04em;margin-bottom:22px}
-.hero-eyebrow::before{content:'⚡'}
-.hero h1{font-family:'Exo 2',sans-serif;font-size:clamp(28px,3.2vw,46px);font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.03em;margin-bottom:14px}
-.hero h1 .accent{color:var(--orange)}
-.hero-desc{font-size:15px;color:var(--text-s);max-width:480px;line-height:1.7;margin-bottom:28px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
-.btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:white;font-family:'Exo 2',sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;padding:14px 28px;border-radius:var(--radius);transition:background var(--tr),transform var(--tr);border:none;cursor:pointer}
-.btn-cta:hover{background:var(--orange-d);transform:translateY(-1px)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--navy);font-family:'Exo 2',sans-serif;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.04em;padding:14px 28px;border-radius:var(--radius);border:2px solid var(--gray-200);transition:all var(--tr);cursor:pointer}
-.btn-ghost:hover{border-color:var(--navy);background:var(--blue-bg)}
-.hero-kpis{display:flex;gap:28px;padding-top:26px;border-top:1px solid var(--gray-200);flex-wrap:wrap}
-.kpi strong{display:block;font-family:'Exo 2',sans-serif;font-size:26px;font-weight:800;color:var(--navy);line-height:1}
-.kpi span{font-size:12px;color:var(--text-s);margin-top:2px;display:block}
-.hero-aside{display:flex;flex-direction:column;padding:16px 0 16px 24px;gap:10px}
-.feat-card{flex:1;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:16px 18px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;transition:all var(--tr);position:relative;overflow:hidden}
-.feat-card:hover{border-color:var(--navy);box-shadow:var(--shadow)}
-.feat-card .fc-cat{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);margin-bottom:6px}
-.feat-card h3{font-family:'Exo 2',sans-serif;font-size:15px;font-weight:700;color:var(--navy);line-height:1.3;margin-bottom:4px}
-.feat-card .fc-desc{font-size:12px;color:var(--text-s);margin-bottom:10px}
-.feat-price{font-family:'Exo 2',sans-serif;font-size:22px;font-weight:800;color:var(--navy)}
-.feat-price-old{font-size:13px;color:var(--gray-500);text-decoration:line-through;margin-left:6px}
-.feat-badge{position:absolute;top:12px;right:12px;background:var(--red);color:white;font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px}
-.feat-avail{font-size:11px;color:var(--green);font-weight:500;margin-top:6px}
-
-/* TRUST */
-.trust{background:var(--blue-bg);border-bottom:1px solid var(--gray-200)}
-.trust-in{max-width:1280px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(4,1fr)}
-.trust-item{display:flex;align-items:center;gap:13px;padding:16px 20px;border-right:1px solid var(--gray-200)}
-.trust-item:last-child{border-right:none}
-.trust-ico{width:42px;height:42px;flex-shrink:0;background:white;border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm)}
-.trust-ico svg{width:20px;height:20px;color:var(--navy)}
-.trust-item strong{display:block;font-size:13px;font-weight:600;color:var(--text);line-height:1.2}
-.trust-item span{font-size:11px;color:var(--text-s)}
-
-/* LAYOUT */
-.container{max-width:1280px;margin:0 auto;padding:0 24px}
-section{padding:48px 0}
-.sec-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;gap:12px}
-.sec-title{font-family:'Exo 2',sans-serif;font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
-.sec-title .u{text-decoration:underline;text-decoration-color:var(--orange);text-underline-offset:4px}
-.sec-all{font-size:13px;font-weight:600;color:var(--navy-l);display:flex;align-items:center;gap:4px;white-space:nowrap;transition:color var(--tr)}
-.sec-all:hover{color:var(--orange)}
-
-/* CATEGORIES */
-.cats{background:var(--white)}
-.cats-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
-.cat-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:22px 12px 18px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;cursor:pointer;transition:all var(--tr)}
-.cat-card:hover{border-color:var(--navy);box-shadow:var(--shadow);transform:translateY(-4px)}
-.cat-icon-wrap{width:62px;height:62px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;background:var(--blue-bg);transition:background var(--tr),transform var(--tr)}
-.cat-card:hover .cat-icon-wrap{transform:scale(1.06)}
-.cat-card h3{font-size:12.5px;font-weight:600;color:var(--text);line-height:1.35}
-.cat-count{font-size:10px;font-weight:700;background:var(--gray-100);color:var(--gray-700);border-radius:99px;padding:2px 10px}
-
-/* PRODUCTS */
-.prod-section{background:var(--gray-50)}
-.prod-tabs{display:flex;gap:0;border-bottom:2px solid var(--gray-200);margin-bottom:28px;overflow-x:auto}
-.prod-tabs::-webkit-scrollbar{display:none}
-.ptab{padding:11px 22px;white-space:nowrap;font-family:'Exo 2',sans-serif;font-size:13px;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all var(--tr);cursor:pointer;background:none;border-left:none;border-right:none;border-top:none}
-.ptab:hover{color:var(--navy)}
-.ptab.on{color:var(--navy);border-bottom-color:var(--orange)}
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-
-/* PRODUCT CARD */
-.pc{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:box-shadow var(--tr),transform var(--tr),border-color var(--tr);display:flex;flex-direction:column}
-.pc:hover{box-shadow:var(--shadow-lg);transform:translateY(-5px);border-color:var(--navy)}
-.pc-img{background:var(--gray-50);height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;border-bottom:1px solid var(--gray-100)}
-.pc-img-inner{font-size:80px;line-height:1;transition:transform .3s ease}
-.pc:hover .pc-img-inner{transform:scale(1.1)}
-.pc-labels{position:absolute;top:12px;left:12px;display:flex;flex-direction:column;gap:5px}
-.lbl{font-size:10px;font-weight:700;padding:4px 9px;border-radius:6px;text-transform:uppercase;letter-spacing:.04em;line-height:1}
-.lbl-new{background:var(--navy);color:white}
-.lbl-sale{background:var(--red);color:white}
-.lbl-hit{background:var(--orange);color:white}
-.pc-wish{position:absolute;top:12px;right:12px;width:34px;height:34px;background:white;border:1.5px solid var(--gray-200);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;opacity:0;transition:opacity var(--tr),border-color var(--tr),transform var(--tr);box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.pc:hover .pc-wish{opacity:1}
-.pc-wish:hover{border-color:var(--red);transform:scale(1.1)}
-.pc-wish.wished{color:var(--red);opacity:1;border-color:var(--red)}
-.pc-body{padding:18px 18px 16px;flex:1;display:flex;flex-direction:column}
-.pc-brand{font-size:11px;font-weight:600;color:var(--gray-500);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
-.pc-name{font-size:14px;font-weight:600;color:var(--text);line-height:1.45;margin-bottom:14px;flex:1}
-.pc-pricing{margin-bottom:10px}
-.pc-price-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.pc-price{font-family:'Exo 2',sans-serif;font-size:28px;font-weight:800;color:var(--text);line-height:1}
-.pc-price-unit{font-size:13px;color:var(--text-s);font-weight:400}
-.pc-price-old{font-size:14px;color:var(--gray-500);text-decoration:line-through}
-.pc-price-save{font-size:11px;font-weight:700;background:#fff0f0;color:var(--red);border-radius:4px;padding:2px 7px}
-.pc-wholesale{display:flex;align-items:center;gap:6px;background:var(--green-bg);border:1px solid #a7f3c8;border-radius:7px;padding:8px 12px;font-size:12px;color:#166534;font-weight:500;margin-bottom:10px}
-.pc-wholesale strong{font-weight:700;font-size:13px;color:var(--green)}
-.pc-wholesale svg{width:13px;height:13px;flex-shrink:0;color:var(--green)}
-.pc-avail{font-size:12px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:5px;margin-bottom:14px}
-.pc-avail::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
-.pc-avail.low{color:var(--orange)}
-.pc-avail.low::before{background:var(--orange)}
-.btn-add{width:100%;background:var(--navy);color:white;border:none;border-radius:var(--radius);padding:13px 16px;font-family:'Exo 2',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;justify-content:center;gap:8px;transition:background var(--tr),transform var(--tr)}
-.btn-add:hover{background:var(--navy-l);transform:scale(1.01)}
-.btn-add.added{background:var(--green)}
-.btn-add svg{width:15px;height:15px}
-
-/* BANNERS */
-.banners-sec{background:var(--white)}
-.banners-grid{display:grid;grid-template-columns:5fr 3fr;gap:16px}
-.banner{border-radius:var(--radius-lg);padding:40px 44px;position:relative;overflow:hidden;cursor:pointer;min-height:210px;display:flex;flex-direction:column;justify-content:center;transition:transform var(--tr)}
-.banner:hover{transform:scale(1.015)}
-.b-navy{background:var(--navy)}
-.b-navy::after{content:'⚡';position:absolute;right:-15px;top:-40px;font-size:200px;opacity:.05;pointer-events:none}
-.banners-right{display:flex;flex-direction:column;gap:16px}
-.banner-sm{min-height:140px;padding:28px 32px}
-.b-navy2{background:#0f2952}
-.b-light{background:var(--blue-bg);border:2px solid var(--gray-200)}
-.b-tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.b-navy .b-tag,.b-navy2 .b-tag{color:rgba(255,255,255,.6)}
-.b-light .b-tag{color:var(--navy)}
-.banner h2{font-family:'Exo 2',sans-serif;font-weight:800;line-height:1.2;margin-bottom:14px}
-.b-navy h2{color:white;font-size:28px}
-.b-navy2 h2{color:white;font-size:20px}
-.b-light h2{color:var(--navy);font-size:20px}
-.banner p{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:20px;max-width:340px}
-.btn-banner-w{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--navy);font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:12px 24px;border-radius:var(--radius);transition:all var(--tr);width:fit-content}
-.btn-banner-w:hover{background:var(--orange);color:white}
-.btn-banner-o{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:white;font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:10px 20px;border-radius:var(--radius);transition:background var(--tr);width:fit-content}
-.btn-banner-o:hover{background:var(--orange-d)}
-.btn-banner-n{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:white;font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.04em;padding:10px 20px;border-radius:var(--radius);transition:background var(--tr);width:fit-content}
-.btn-banner-n:hover{background:var(--navy-l)}
-
-/* WHY */
-.why{background:var(--gray-50)}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.why-card{background:var(--white);border:1.5px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px 24px;text-align:center;transition:all var(--tr)}
-.why-card:hover{border-color:var(--navy);box-shadow:var(--shadow);transform:translateY(-3px)}
-.why-ico{width:64px;height:64px;border-radius:18px;background:var(--blue-bg);margin:0 auto 18px;display:flex;align-items:center;justify-content:center;font-size:30px}
-.why-card h3{font-family:'Exo 2',sans-serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:8px}
-.why-card p{font-size:13px;color:var(--text-s);line-height:1.6}
-
-/* BRANDS */
-.brands{background:var(--white);border-top:1px solid var(--gray-200)}
-.brands-strip{display:flex;gap:12px;overflow-x:auto;padding-bottom:4px}
-.brands-strip::-webkit-scrollbar{display:none}
-.brand-pill{flex-shrink:0;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:12px 28px;font-size:14px;font-weight:700;color:var(--gray-700);letter-spacing:.04em;cursor:pointer;transition:all var(--tr)}
-.brand-pill:hover{border-color:var(--navy);color:var(--navy);background:var(--blue-bg)}
-
-/* FOOTER */
-.footer{background:var(--navy);color:rgba(255,255,255,.6)}
-.footer-main{max-width:1280px;margin:0 auto;padding:52px 24px 36px;display:grid;grid-template-columns:280px repeat(3,1fr);gap:48px}
-.footer-logo{margin-bottom:16px}
-.footer-logo .logo-mark{background:rgba(255,255,255,.15)}
-.footer-logo .logo-text strong{color:white}
-.footer-logo .logo-text small{color:rgba(255,255,255,.4)}
-.footer-about p{font-size:13px;line-height:1.7;margin-bottom:18px}
-.footer-contacts{display:flex;flex-direction:column;gap:7px}
-.footer-contacts a{font-size:14px;color:rgba(255,255,255,.85);font-weight:500;transition:color var(--tr)}
-.footer-contacts a:hover{color:var(--orange)}
-.footer-contacts .addr{font-size:12px;color:rgba(255,255,255,.4)}
-.footer-col h4{font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;color:white;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
-.footer-col ul{display:flex;flex-direction:column;gap:10px}
-.footer-col a{font-size:13px;transition:color var(--tr)}
-.footer-col a:hover{color:white}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:16px 24px;max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;font-size:12px;flex-wrap:wrap;gap:10px}
-.pay-icons{display:flex;gap:8px}
-.pay-ico{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:4px 11px;font-size:11px;font-weight:700;color:rgba(255,255,255,.7)}
-
-@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.hero-main{animation:up .5s ease both}
-.hero-aside{animation:up .5s ease .12s both}
-.cat-card{animation:up .4s ease both}
-.pc{animation:up .4s ease both}
-.why-card{animation:up .4s ease both}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    body {background-color: #f4f5fa}
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #ffffff; color: rgba(255, 255, 255, 0.75); -webkit-text-stroke: rgba(255, 255, 255, 0.75); background-color: #111e46}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.5px 'Helvetica Neue'; color: #ffffff; color: rgba(255, 255, 255, 0.75); -webkit-text-stroke: rgba(255, 255, 255, 0.75); background-color: #111e46; min-height: 15.0px}
+    span.s1 {font-kerning: none}
+  </style>
 </head>
 <body>
-
-<div class="topbar">
-  <div class="topbar-in">
-    <div class="topbar-l">
-      <span class="work-hours">Пн–Пт 9:00–17:00, Сб 9:30–15:00</span>
-      <span style="opacity:.3">·</span>
-      <span>📍 Харків, вул. Польова, 67</span>
-    </div>
-    <div class="topbar-r">
-      <a href="#">Про нас</a>
-      <a href="#">Доставка та оплата</a>
-      <a href="#">Акції</a>
-      <a href="tel:+380675453835" class="topbar-phone">+380 67 545-38-35</a>
-      <a href="tel:+380958125905" class="topbar-phone">+380 95 812-59-05</a>
-    </div>
-  </div>
-</div>
-
-<header class="header">
-  <div class="header-in">
-    <a href="#" class="logo">
-      <div class="logo-mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      </div>
-      <div class="logo-text"><strong>ELAV.SHOP</strong><small>Магазин електрики</small></div>
-    </a>
-    <div class="search-wrap">
-      <select>
-        <option>Всі категорії</option>
-        <option>Кабель та провід</option>
-        <option>НВА</option>
-        <option>Освітлення</option>
-        <option>Монтаж</option>
-      </select>
-      <input type="text" placeholder="Кабель ВВГ 3×2.5, автомат 16А, LED лампа E27...">
-      <button class="search-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        Знайти
-      </button>
-    </div>
-    <div class="hdr-right">
-      <a href="#" class="hdr-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <span>Кабінет</span>
-      </a>
-      <a href="#" class="hdr-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-        <span>Вибране</span>
-        <div class="hdr-badge">2</div>
-      </a>
-      <a href="#" class="hdr-ico cart-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <div class="cart-info"><strong>Кошик (3)</strong><small>1 240 ₴</small></div>
-      </a>
-    </div>
-  </div>
-</header>
-
-<nav class="nav">
-  <div class="nav-in">
-    <button class="all-cats">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      Всі категорії
-    </button>
-    <div class="nav-links">
-      <a href="#">Кабель та провід</a>
-      <a href="#">Автомати, УЗО</a>
-      <a href="#">Освітлення</a>
-      <a href="#">Монтаж</a>
-      <a href="#">Енергонезалежність</a>
-      <a href="#">Генератори</a>
-      <a href="#">Електрофурнітура</a>
-      <a href="#">Доставка</a>
-      <a href="#" class="fire">🔥 Розпродаж</a>
-    </div>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-in">
-    <div class="hero-main">
-      <div class="hero-eyebrow">21 рік на ринку · Харків та вся Україна</div>
-      <h1>Все для <span class="accent">електрики</span> —<br>в одному місці</h1>
-      <p class="hero-desc">Кабелі, автомати, LED-освітлення, монтажні матеріали, генератори та інвертори. 10 000+ позицій з наявності на складі. Відправка Новою Поштою по всій Україні.</p>
-      <div class="hero-actions">
-        <a href="#cats" class="btn-cta">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
-          Перейти до каталогу
-        </a>
-        <a href="tel:+380675453835" class="btn-ghost">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.36 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17v-.08z"/></svg>
-          Зателефонувати
-        </a>
-      </div>
-      <div class="hero-kpis">
-        <div class="kpi"><strong>10 000+</strong><span>Товарів в каталозі</span></div>
-        <div class="kpi"><strong>21 рік</strong><span>На ринку</span></div>
-        <div class="kpi"><strong>1 день</strong><span>Відправка НП</span></div>
-        <div class="kpi"><strong>98%</strong><span>Позитивних відгуків</span></div>
-      </div>
-    </div>
-    <div class="hero-aside">
-      <div class="feat-card">
-        <div class="fc-cat">⚡ Хіт тижня</div>
-        <h3>Кабель ВВГ-П 3×2.5 мм²</h3>
-        <div class="fc-desc">Мідний, ДСТУ. В наявності 1000 м</div>
-        <div><span class="feat-price">28.50 ₴</span><span class="feat-price-old">34.00 ₴</span><span class="feat-badge">-16%</span></div>
-        <div class="feat-avail">✓ В наявності</div>
-      </div>
-      <div class="feat-card">
-        <div class="fc-cat">🔋 Новинка</div>
-        <h3>Інвертор 2000W чиста синусоїда</h3>
-        <div class="fc-desc">12V→220V, Luxeon. Для будинку</div>
-        <div><span class="feat-price">4 850 ₴</span></div>
-        <div class="feat-avail">✓ В наявності</div>
-      </div>
-      <div class="feat-card">
-        <div class="fc-cat">💡 Акція</div>
-        <h3>LED лампа Philips 10W E27 4000K</h3>
-        <div class="fc-desc">Нейтральний білий, 806 lm</div>
-        <div><span class="feat-price">89 ₴</span><span class="feat-price-old">120 ₴</span><span class="feat-badge">-26%</span></div>
-        <div class="feat-avail">✓ В наявності</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="trust">
-  <div class="trust-in">
-    <div class="trust-item">
-      <div class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-      <div><strong>Нова Пошта по Україні</strong><span>Відправка наступного дня</span></div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div><strong>Офіційна гарантія</strong><span>На весь асортимент</span></div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-      <div><strong>Оптові ціни для бізнесу</strong><span>Роздріб + опт для юр. осіб</span></div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.36 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17v-.08z"/></svg></div>
-      <div><strong>Консультація фахівця</strong><span>Пн–Пт 9:00–17:00</span></div>
-    </div>
-  </div>
-</div>
-
-<section class="cats" id="cats">
-  <div class="container">
-    <div class="sec-head">
-      <h2 class="sec-title">Категорії <span class="u">товарів</span></h2>
-      <a href="#" class="sec-all">Весь каталог →</a>
-    </div>
-    <div class="cats-grid">
-      <a href="#" class="cat-card" style="animation-delay:.04s"><div class="cat-icon-wrap">🔌</div><h3>Кабель та провід</h3><span class="cat-count">840 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.08s"><div class="cat-icon-wrap">⚡</div><h3>Низьковольтна апаратура</h3><span class="cat-count">1 200 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.12s"><div class="cat-icon-wrap">💡</div><h3>Освітлення</h3><span class="cat-count">620 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.16s"><div class="cat-icon-wrap">🔧</div><h3>Матеріали для монтажу</h3><span class="cat-count">950 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.20s"><div class="cat-icon-wrap">🔋</div><h3>Енергонезалежність</h3><span class="cat-count">340 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.24s"><div class="cat-icon-wrap">🔦</div><h3>Ліхтарики</h3><span class="cat-count">180 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.28s"><div class="cat-icon-wrap">⚙️</div><h3>Електрофурнітура</h3><span class="cat-count">720 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.32s"><div class="cat-icon-wrap">⛽</div><h3>Генератори</h3><span class="cat-count">95 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.36s"><div class="cat-icon-wrap">🌡️</div><h3>Термометри</h3><span class="cat-count">60 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.40s"><div class="cat-icon-wrap">🔒</div><h3>Герметичні з'єднання</h3><span class="cat-count">210 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.44s"><div class="cat-icon-wrap">🔗</div><h3>Перемички для АКБ</h3><span class="cat-count">85 товарів</span></a>
-      <a href="#" class="cat-card" style="animation-delay:.48s"><div class="cat-icon-wrap">🏠</div><h3>Дім, сад, город</h3><span class="cat-count">270 товарів</span></a>
-    </div>
-  </div>
-</section>
-
-<section class="prod-section">
-  <div class="container">
-    <div class="sec-head">
-      <h2 class="sec-title">Популярні <span class="u">товари</span></h2>
-      <a href="#" class="sec-all">Всі товари →</a>
-    </div>
-    <div class="prod-tabs">
-      <button class="ptab on">Хіти продажів</button>
-      <button class="ptab">Новинки</button>
-      <button class="ptab">Акції та знижки</button>
-      <button class="ptab">Кабелі</button>
-      <button class="ptab">Освітлення</button>
-      <button class="ptab">НВА</button>
-    </div>
-    <div class="products-grid">
-      <div class="pc" style="animation-delay:.05s">
-        <div class="pc-img"><div class="pc-labels"><span class="lbl lbl-hit">Хіт</span></div><div class="pc-img-inner">🔌</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">ТМ ЕЛАВ / ДСТУ</div>
-          <div class="pc-name">Кабель ВВГ-П 3×2.5 мм² (ціна за 1 м)</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">28.50 ₴</span><span class="pc-price-unit">/м</span><span class="pc-price-old">34.00 ₴</span><span class="pc-price-save">-16%</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 100 м: <strong>24.50 ₴/м</strong></div>
-          <div class="pc-avail">В наявності · 850 м</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.10s">
-        <div class="pc-img"><div class="pc-labels"><span class="lbl lbl-sale">-15%</span></div><div class="pc-img-inner">⚡</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">Schneider Electric</div>
-          <div class="pc-name">Автоматичний вимикач iC60N 1P 16А тип C</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">385 ₴</span><span class="pc-price-old">453 ₴</span><span class="pc-price-save">-15%</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 10 шт: <strong>330 ₴/шт</strong></div>
-          <div class="pc-avail">В наявності · 47 шт</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.15s">
-        <div class="pc-img"><div class="pc-labels"><span class="lbl lbl-sale">-26%</span><span class="lbl lbl-new" style="margin-top:4px">Новинка</span></div><div class="pc-img-inner">💡</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">Philips Essential</div>
-          <div class="pc-name">LED лампа 10W E27 4000K нейтральний білий</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">89 ₴</span><span class="pc-price-old">120 ₴</span><span class="pc-price-save">-26%</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 50 шт: <strong>72 ₴/шт</strong></div>
-          <div class="pc-avail">В наявності · 320 шт</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.20s">
-        <div class="pc-img"><div class="pc-img-inner">🔋</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">Luxeon / 2000W</div>
-          <div class="pc-name">Інвертор 12V→220V 2000W чиста синусоїда</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">4 850 ₴</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 3 шт: <strong>4 350 ₴/шт</strong></div>
-          <div class="pc-avail low">Мало залишків · 4 шт</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.25s">
-        <div class="pc-img"><div class="pc-labels"><span class="lbl lbl-hit">Хіт</span></div><div class="pc-img-inner">🔧</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">ТМ ЕЛАВ</div>
-          <div class="pc-name">Гофротруба ПВХ ∅20 мм (бухта 50 м)</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">185 ₴</span><span class="pc-price-unit">/бухта</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 20 бухт: <strong>155 ₴/бухта</strong></div>
-          <div class="pc-avail">В наявності · 180 бухт</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.30s">
-        <div class="pc-img"><div class="pc-labels"><span class="lbl lbl-sale">-12%</span></div><div class="pc-img-inner">🔒</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">ABB / IP68</div>
-          <div class="pc-name">УЗО ABB F202 2P 25А / 30мА тип AC</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">890 ₴</span><span class="pc-price-old">1 010 ₴</span><span class="pc-price-save">-12%</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 5 шт: <strong>780 ₴/шт</strong></div>
-          <div class="pc-avail">В наявності · 28 шт</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.35s">
-        <div class="pc-img"><div class="pc-img-inner">🏭</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">IEK / NYM</div>
-          <div class="pc-name">Кабель NYM 3×1.5 мм² (ціна за 1 м)</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">21.00 ₴</span><span class="pc-price-unit">/м</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 200 м: <strong>18.50 ₴/м</strong></div>
-          <div class="pc-avail">В наявності · 2 400 м</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-      <div class="pc" style="animation-delay:.40s">
-        <div class="pc-img"><div class="pc-labels"><span class="lbl lbl-new">Новинка</span></div><div class="pc-img-inner">🌞</div><div class="pc-wish" onclick="toggleWish(this)">♡</div></div>
-        <div class="pc-body">
-          <div class="pc-brand">Jinko Solar / 400W</div>
-          <div class="pc-name">Сонячна панель монокристалічна 400W</div>
-          <div class="pc-pricing"><div class="pc-price-row"><span class="pc-price">5 200 ₴</span></div></div>
-          <div class="pc-wholesale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>Опт від 4 шт: <strong>4 800 ₴/шт</strong></div>
-          <div class="pc-avail low">Мало залишків · 6 шт</div>
-          <button class="btn-add" onclick="addToCart(this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>В кошик</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="banners-sec">
-  <div class="container">
-    <div class="banners-grid">
-      <div class="banner b-navy">
-        <div class="b-tag">⚡ Енергонезалежність</div>
-        <h2>Сонячні панелі,<br>інвертори та АКБ</h2>
-        <p>Готові рішення для резервного живлення будинку та бізнесу. Підбір та консультація безкоштовно.</p>
-        <a href="#" class="btn-banner-w">Переглянути →</a>
-      </div>
-      <div class="banners-right">
-        <div class="banner banner-sm b-navy2">
-          <div class="b-tag">🔥 Акція тижня</div>
-          <h2>Кабелі ВВГ — знижка 10%</h2>
-          <a href="#" class="btn-banner-w" style="padding:9px 18px;font-size:12px;margin-top:4px">Обрати →</a>
-        </div>
-        <div class="banner banner-sm b-light">
-          <div class="b-tag">💼 Для бізнесу</div>
-          <h2>Оптові ціни та відстрочка платежу</h2>
-          <a href="#" class="btn-banner-n" style="padding:9px 18px;font-size:12px;margin-top:4px">Зв'язатися →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="why">
-  <div class="container">
-    <div class="sec-head"><h2 class="sec-title">Чому <span class="u">обирають нас</span></h2></div>
-    <div class="why-grid">
-      <div class="why-card" style="animation-delay:.05s"><div class="why-ico">🏭</div><h3>21 рік на ринку</h3><p>З 2004 року постачаємо електротехніку для будівельників, електриків та підприємств Харкова і всієї України.</p></div>
-      <div class="why-card" style="animation-delay:.10s"><div class="why-ico">📦</div><h3>Товар на складі</h3><p>Більшість позицій завжди в наявності. Відправка наступного дня після підтвердження замовлення.</p></div>
-      <div class="why-card" style="animation-delay:.15s"><div class="why-ico">💰</div><h3>Дві ціни: роздріб і опт</h3><p>Для приватних осіб — роздрібна ціна. Для підприємств та електриків — оптова. Реєстрація безкоштовна.</p></div>
-      <div class="why-card" style="animation-delay:.20s"><div class="why-ico">🛡️</div><h3>Офіційна гарантія</h3><p>Всі товари сертифіковані. Гарантія на кожну позицію. Повернення та обмін протягом 14 днів.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="brands">
-  <div class="container">
-    <div class="sec-head"><h2 class="sec-title">Бренди, які <span class="u">ми продаємо</span></h2></div>
-    <div class="brands-strip">
-      <div class="brand-pill">Schneider Electric</div>
-      <div class="brand-pill">ABB</div>
-      <div class="brand-pill">IEK</div>
-      <div class="brand-pill">Philips</div>
-      <div class="brand-pill">Luxeon</div>
-      <div class="brand-pill">Jinko Solar</div>
-      <div class="brand-pill">Legrand</div>
-      <div class="brand-pill">Viko</div>
-      <div class="brand-pill">LEZARD</div>
-      <div class="brand-pill">ElectroHouse</div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="footer-main">
-    <div class="footer-about">
-      <div class="footer-logo">
-        <a href="#" class="logo">
-          <div class="logo-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
-          <div class="logo-text"><strong>ELAV.SHOP</strong><small>Магазин електрики</small></div>
-        </a>
-      </div>
-      <p>Інтернет-магазин електротехніки. Харків, 21 рік на ринку. Кабелі, автомати, LED-освітлення, монтажні матеріали та все для енергонезалежності.</p>
-      <div class="footer-contacts">
-        <a href="tel:+380675453835">+380 (67) 545-38-35</a>
-        <a href="tel:+380958125905">+380 (95) 812-59-05</a>
-        <a href="mailto:elav@i.ua">elav@i.ua</a>
-        <span class="addr">📍 Харків, вул. Польова, 67</span>
-      </div>
-    </div>
-    <div class="footer-col">
-      <h4>Каталог</h4>
-      <ul>
-        <li><a href="#">Кабель та провід</a></li>
-        <li><a href="#">Низьковольтна апаратура</a></li>
-        <li><a href="#">LED освітлення</a></li>
-        <li><a href="#">Матеріали для монтажу</a></li>
-        <li><a href="#">Енергонезалежність</a></li>
-        <li><a href="#">Електрофурнітура</a></li>
-        <li><a href="#">Генератори</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Інформація</h4>
-      <ul>
-        <li><a href="#">Про компанію</a></li>
-        <li><a href="#">Доставка та оплата</a></li>
-        <li><a href="#">Повернення товару</a></li>
-        <li><a href="#">Оптові умови</a></li>
-        <li><a href="#">Блог та статті</a></li>
-        <li><a href="#">Акції та розпродаж</a></li>
-        <li><a href="#">Контакти</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Оплата та доставка</h4>
-      <ul>
-        <li><a href="#">Нова Пошта</a></li>
-        <li><a href="#">Самовивіз — Харків</a></li>
-        <li><a href="#">WayForPay · LiqPay</a></li>
-        <li><a href="#">Накладений платіж</a></li>
-        <li><a href="#">Безготівковий розрахунок</a></li>
-        <li><a href="#">Розстрочка Mono / ПриватБанк</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2004–2025 ELAV.SHOP — Всі права захищені</span>
-    <div class="pay-icons">
-      <span class="pay-ico">VISA</span><span class="pay-ico">MC</span>
-      <span class="pay-ico">WayForPay</span><span class="pay-ico">LiqPay</span><span class="pay-ico">НП</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-document.querySelectorAll('.ptab').forEach(t => {
-  t.addEventListener('click', function() {
-    document.querySelectorAll('.ptab').forEach(x => x.classList.remove('on'));
-    this.classList.add('on');
-  });
-});
-function toggleWish(el) {
-  el.classList.toggle('wished');
-  el.textContent = el.classList.contains('wished') ? '♥' : '♡';
-}
-function addToCart(btn) {
-  const orig = btn.innerHTML;
-  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="15" height="15"><polyline points="20 6 9 17 4 12"/></svg> Додано!';
-  btn.classList.add('added');
-  setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('added'); }, 1600);
-}
-document.querySelectorAll('a[href="#cats"]').forEach(a => {
-  a.addEventListener('click', e => { e.preventDefault(); document.getElementById('cats').scrollIntoView({behavior:'smooth'}); });
-});
-</script>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="uk"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;ELAV — Експертна електрика | Від ідеї до ввімкнення&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;display=swap" rel="stylesheet"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.bg-navy { background-color: #1A2B3C; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.text-navy { color: #1A2B3C; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.bg-copper { background-color: #CD7F32; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.text-copper { color: #CD7F32; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.border-copper { border-color: #CD7F32; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.bg-soft-grey { background-color: #F8FAFC; }</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">        </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.card-hover:hover {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>transform: translateY(-10px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>box-shadow: 0 20px 40px rgba(26, 43, 60, 0.1);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.hero-gradient {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.glass-nav {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.8);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(12px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>-webkit-backdrop-filter: blur(12px);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body class="bg-soft-grey text-slate-800"&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;nav class="glass-nav sticky top-0 z-50 border-b border-slate-100 h-20"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="text-3xl font-extrabold tracking-tighter text-navy"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>ELAV&lt;span class="text-copper"&gt;.&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-500"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#catalog" class="hover:text-copper transition"&gt;Каталог&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#pro" class="hover:text-copper transition"&gt;Профі &amp; Дизайн&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#blog" class="hover:text-copper transition"&gt;Експертний блог&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#contact" class="hover:text-copper transition"&gt;Контакти&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="text-right hidden sm:block mr-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="text-[10px] text-slate-400 font-bold uppercase tracking-tight"&gt;Київ, доставка Україна&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="font-bold text-navy text-sm"&gt;0 800 XX XX XX&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button class="bg-navy text-white p-3 rounded-xl hover:bg-copper transition shadow-lg shadow-navy/20"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="hero-gradient pt-12 pb-24 px-6 relative overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="z-10"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="bg-navy text-white px-4 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-[0.3em]"&gt;Premium Engineering&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-5xl lg:text-7xl font-extrabold text-navy mt-8 leading-[1.05] tracking-tight"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Експертна електрика.&lt;br&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="text-copper font-light italic"&gt;Від ідеї до ввімкнення.&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="mt-8 text-lg text-slate-500 max-w-lg leading-relaxed font-medium"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Ми не просто склад. Ми — ваш інженерний партнер. Комплектуємо об'єкти з гарантією безпеки та перевіркою кожного проекту.</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mt-10 flex flex-wrap gap-4"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="#catalog" class="bg-navy text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-slate-800 transition shadow-xl shadow-navy/20"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Каталог рішень</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;a href="#" class="bg-white border border-slate-200 text-navy px-10 py-5 rounded-2xl font-bold text-lg hover:border-copper transition flex items-center gap-3"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>Прорахувати кошторис</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="text-copper"&gt;→&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="relative"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="rounded-[2.5rem] overflow-hidden shadow-2xl border-[12px] border-white transform rotate-2"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Electrical Work" class="w-full h-[550px] object-cover"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl max-w-[240px]"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center gap-3 mb-2 text-copper"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;span class="text-3xl font-black"&gt;100%&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-col"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div class="flex text-[10px]"&gt;★★★★★&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[10px] font-bold uppercase text-navy"&gt;Рейтинг на Prom.ua&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="text-[11px] text-slate-500 font-medium leading-snug"&gt;Найкращий сервіс комплектації за версією наших клієнтів&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section class="bg-white border-y border-slate-100 py-10"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col gap-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-copper font-black text-xl leading-none"&gt;01&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-navy font-bold text-xs uppercase tracking-widest"&gt;Аудит проєкту&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col gap-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-copper font-black text-xl leading-none"&gt;02&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-navy font-bold text-xs uppercase tracking-widest"&gt;Тільки оригінал&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col gap-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-copper font-black text-xl leading-none"&gt;03&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-navy font-bold text-xs uppercase tracking-widest"&gt;Власний склад&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col gap-1"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-copper font-black text-xl leading-none"&gt;04&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-navy font-bold text-xs uppercase tracking-widest"&gt;Відправка 24г&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="catalog" class="py-24 px-6"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="text-center max-w-2xl mx-auto mb-16"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-4xl font-extrabold text-navy tracking-tight mb-4"&gt;Структура вашого об'єкту&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-500 font-medium"&gt;Ми розділили асортимент за етапами монтажу, щоб ви нічого не забули.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-10 rounded-[2rem] card-hover transition-all duration-500 group border border-slate-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="w-14 h-14 bg-soft-grey rounded-2xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-bold text-navy mb-4"&gt;Кабель та Провід&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 text-sm text-slate-500 font-medium"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="flex items-center gap-2 italic underline decoration-copper/30 hover:text-navy cursor-pointer"&gt;ВВГнг-п / ВВГнг-дш (Силовий)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;ПВС / ШВВП (З'єднувальний)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;Гофра та системи прокладки&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-10 rounded-[2rem] card-hover transition-all duration-500 group border border-slate-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="w-14 h-14 bg-soft-grey rounded-2xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-bold text-navy mb-4"&gt;Щитове обладнання&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 text-sm text-slate-500 font-medium"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;Автомати та ПЗВ (Schneider, ABB)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;Реле напруги (ZUBR)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;Щити (Вбудовані та накладні)&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-10 rounded-[2rem] card-hover transition-all duration-500 group border border-slate-50"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="w-14 h-14 bg-soft-grey rounded-2xl flex items-center justify-center mb-8 group-hover:bg-navy group-hover:text-white transition-colors"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;&lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-2xl font-bold text-navy mb-4"&gt;Розетки та Світло&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;ul class="space-y-3 text-sm text-slate-500 font-medium"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;Schneider Asfora / Sedna&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;LED стрічка та профілі&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;li class="hover:text-navy cursor-pointer transition"&gt;Системи "Тепла підлога"&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="blog" class="py-24 bg-navy text-white overflow-hidden relative"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-7xl mx-auto px-6 relative z-10"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between items-end mb-16"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;span class="text-copper font-bold text-xs uppercase tracking-widest"&gt;Знання — це безпека&lt;/span&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-4xl font-extrabold mt-2"&gt;Блог експерта ELAV&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#" class="hidden md:block text-sm font-bold border-b border-copper text-copper pb-1"&gt;Всі статті →&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p2"><span class="s1"><span class="Apple-converted-space">            </span></span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="grid md:grid-cols-3 gap-10"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;article class="group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-video bg-slate-800 rounded-2xl mb-6 overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;img src="https://images.unsplash.com/photo-1558403194-611308249627?auto=format&amp;fit=crop&amp;w=600&amp;q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-60"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold group-hover:text-copper transition leading-snug"&gt;Як перевірити кабель на чесне січення: 3 методи&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-4 text-sm text-slate-400 leading-relaxed"&gt;Навіть якщо на бухті написано ГОСТ, реальність може вас здивувати. Вчимося міряти штангенциркулем.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;article class="group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-video bg-slate-800 rounded-2xl mb-6 overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?auto=format&amp;fit=crop&amp;w=600&amp;q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-60"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold group-hover:text-copper transition leading-snug"&gt;Топ-5 помилок при збірці щита в квартирі&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-4 text-sm text-slate-400 leading-relaxed"&gt;Чому вибиває ПЗВ без причини і як правильно розподілити навантаження на автомати.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;article class="group"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="aspect-video bg-slate-800 rounded-2xl mb-6 overflow-hidden"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;img src="https://images.unsplash.com/photo-1565608414361-19def156bc34?auto=format&amp;fit=crop&amp;w=600&amp;q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 opacity-60"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold group-hover:text-copper transition leading-snug"&gt;Еволюція розеток: що ставити у 2026 році?&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;p class="mt-4 text-sm text-slate-400 leading-relaxed"&gt;Огляд розумних розеток, вбудованих USB-C та трендових матових кольорів.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/article&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="absolute top-0 right-0 w-1/3 h-full bg-copper/5 -skew-x-12 translate-x-1/2"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="contact" class="py-24 px-6 text-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-4xl mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-4xl lg:text-5xl font-extrabold text-navy mb-8 leading-tight"&gt;Готові до безпечного &lt;br&gt;та розумного монтажу?&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-xl text-slate-500 mb-12"&gt;Залиште заявку на безкоштовний технічний аудит вашого проєкту або специфікації.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-2 rounded-[2rem] shadow-2xl border border-slate-100 flex flex-col md:flex-row gap-2 max-w-2xl mx-auto"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;input type="text" placeholder="Ваш номер телефону" class="flex-1 bg-transparent px-8 py-4 outline-none font-bold text-navy"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button class="bg-copper text-white px-10 py-5 rounded-[1.5rem] font-bold hover:bg-navy transition-all duration-300"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>Обговорити проєкт</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="mt-8 text-xs text-slate-400 font-bold uppercase tracking-widest"&gt;Київ • Відправка по всій Україні • Гарантія якості&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer class="bg-white py-12 border-t border-slate-100 text-center"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="text-xl font-extrabold text-navy mb-4"&gt;ELAV&lt;span class="text-copper"&gt;.&lt;/span&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;p class="text-sm text-slate-400 italic"&gt;© 2026 ELAV Shop. Експертна електрика від ідеї до ввімкнення.&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
 </body>
 </html>
